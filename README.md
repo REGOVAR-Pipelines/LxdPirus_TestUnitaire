@@ -4,6 +4,8 @@ This pipeline do almost nothing, it's used by Pirus unit tests to test the lxd c
 
 This document explain you how to build it.
 
+**/!\  WARNING /!\** : the makefile actually not working. but if you execute "manually" all commands yourself, it works.
+
 ## Requirement
  * You need LXD on your computer to create it
  * You should read the official doc of Pirus
@@ -16,6 +18,5 @@ This document explain you how to build it.
 If the make instruction run without error, it will create the pirus pipeline image : LxdPirus_TestUnitaire.tar.xz
 
 You can then use it on your server to run TU (have a look to the Pirus/pirus/tests/core/test_core_lxdmanager.py to set the path where is the image).
-
 
 
