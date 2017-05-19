@@ -14,7 +14,8 @@ This document explain you how to build it.
     make install
    
 If the make instruction run without error, it will create the pirus pipeline image : LxdPirus_TestUnitaire.tar.xz
+
 You can then use it on your server to run TU (have a look to the Pirus/pirus/tests/core/test_core_lxdmanager.py to set the path where is the image).
-You can also use this 
+
 
 
