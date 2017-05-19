@@ -1,0 +1,73 @@
+{
+    "architecture": "x86_64",
+    "creation_date": 1493869740,
+    "properties": {
+        "architecture": "x86_64",
+        "description": "ubuntu xenial x86_64 (default) (20170504_03:49)",
+        "name": "ubuntu-xenial-x86_64-default-20170504_03:49",
+        "os": "ubuntu",
+        "release": "xenial",
+        "variant": "default"
+    },
+    "templates": {
+        "/etc/hostname": {
+            "template": "hostname.tpl",
+            "when": [
+                "create",
+                "copy"
+            ]
+        },
+        "/etc/hosts": {
+            "template": "hosts.tpl",
+            "when": [
+                "create",
+                "copy"
+            ]
+        },
+        "/etc/init/console.override": {
+            "template": "upstart-override.tpl",
+            "when": [
+                "create"
+            ]
+        },
+        "/etc/init/tty1.override": {
+            "template": "upstart-override.tpl",
+            "when": [
+                "create"
+            ]
+        },
+        "/etc/init/tty2.override": {
+            "template": "upstart-override.tpl",
+            "when": [
+                "create"
+            ]
+        },
+        "/etc/init/tty3.override": {
+            "template": "upstart-override.tpl",
+            "when": [
+                "create"
+            ]
+        },
+        "/etc/init/tty4.override": {
+            "template": "upstart-override.tpl",
+            "when": [
+                "create"
+            ]
+        }
+    },
+    "pirus":
+    {
+        "name" : "Lxd Pirus - Test Unitaire", 
+        "description" : "Test pipeline",
+        "version": "1.0.0",
+        "pirus_api": "0.2.0",
+        "license" : "AGPLv3",
+        "developers" : ["Olivier GUEUDELOT"],
+        "job" : "/pipeline/job/run.sh",
+        "inputs" : "/pipeline/inputs",
+        "outputs" : "/pipeline/outputs",
+        "databases" : "/pipeline/db",
+        "logs" : "/pipeline/logs",
+        "documents" : ["/pipeline/form.json", "pipeline/icon.png", "/wrong/file/failed.test"]
+    }
+}
