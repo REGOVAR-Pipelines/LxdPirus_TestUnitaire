@@ -1,17 +1,17 @@
 install:
-	lxc launch images:ubuntu/xenial pirus
-	lxc exec pirus -- apt install -y curl jq
-	lxc exec pirus -- mkdir -p /pipeline/{job,inputs,outputs,logs,db}
+	lxc launch images:ubuntu/xenial lxd-pirus-tu
+	lxc exec --mode=non-interactive lxd-pirus-tu -- apt install -y curl jq --fix-missing
+	lxc exec --mode=non-interactive lxd-pirus-tu -- mkdir -p /pipeline/{job,inputs,outputs,logs,db}
 
-	lxc file push form.json pirus /pipeline/form.json
-	lxc file push icon.png pirus /pipeline/icon.png
-	lxc file push run.sh pirus /pipeline/job/run.sh
-	lxc exec pirus -- chmod +x /pipeline/job/run.sh
+	lxc file push form.json lxd-pirus-tu /pipeline/form.json
+	lxc file push icon.png lxd-pirus-tu /pipeline/icon.png
+	lxc file push run.sh lxd-pirus-tu /pipeline/job/run.sh
+	lxc exec --mode=non-interactive lxd-pirus-tu -- chmod +x /pipeline/job/run.sh
 
-	lxc stop pirus
-	lxc publish pirus --alias=LxdPirus_TestUnitaire
+	lxc stop lxd-pirus-tu
+	lxc publish lxd-pirus-tu --alias=LxdPirus_TestUnitaire
 
-	lxc image export LxdPirus_TestUnitaire
+	lxc image export lxd-pirus-tu
 	ls | grep ".tar.gz" | awk '{print $1}' | xargs sudo tar xf
 	ls | grep ".tar.gz" | awk '{print $1}' | xargs sudo rm
 
@@ -23,3 +23,5 @@ install:
 
 clean:
 	sudo rm -fr metadata.yaml rootfs templates 
+	lxc list | grep "lxd-pirus-tu" | awk '{print $$2}' | xargs lxc delete --force
+	lxc image list | grep "lxd-pirus-tu" | awk '{print $$2}' | xargs lxc image delete
