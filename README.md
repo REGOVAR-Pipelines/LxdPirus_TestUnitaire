@@ -7,8 +7,8 @@ This document explain you how to build it.
 **/!\  WARNING /!\\** : the makefile actually not working. but if you execute "manually" all commands yourself, it works.
 
 ## Requirement
- * You need LXD on your computer to create it
- * You should read the official doc of Pirus
+ * You need LXD on your computer.
+ * You need root privileges (sudo)
 
 ## Instructions
 
